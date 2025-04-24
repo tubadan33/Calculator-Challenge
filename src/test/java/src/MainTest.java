@@ -48,18 +48,24 @@ class MainTest {
 
     @Test
     public void parseNumberTest(){
-        //Should parse numbers and return a number
+        //Should parse and return a number
         Integer result = parseNumber("1");
         assertEquals(1, result);
 
         result = parseNumber("25");
         assertEquals(25, result);
 
+        result = parseNumber("1000");
+        assertEquals(1000, result);
+
         //Should convert invalid numbers to 0
         result = parseNumber("b");
         assertEquals(0, result);
 
         result = parseNumber("-z");
+        assertEquals(0, result);
+
+        result = parseNumber("1001");
         assertEquals(0, result);
     }
 

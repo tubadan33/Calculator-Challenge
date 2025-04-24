@@ -20,7 +20,11 @@ public class Utils {
 
     public static int parseNumber(String stringToParse) {
         if (isNumeric(stringToParse)) {
-            return Integer.parseInt(stringToParse);
+            int number = Integer.parseInt(stringToParse);
+            if (number > 1000) {
+                return 0;
+            }
+            return number;
         }
         return 0;
     }
