@@ -23,6 +23,15 @@ class MainTest {
     }
 
     @Test
+    public void negativeNumberCheckTest(){
+        //Should throw an exception if there any negative numbers
+        assertThrows(IllegalArgumentException.class, () -> negativeNumberCheck(Arrays.asList(1, 2, -3)));
+
+        //Should not throw an exception if there are no negative numbers
+        assertDoesNotThrow(() -> negativeNumberCheck(Arrays.asList(1, 5)));
+    }
+
+    @Test
     public void parseInputTest() {
         //Should parse the input and return a list of numbers
         List<Integer> result = parseInput("1, 3");
