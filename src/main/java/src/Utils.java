@@ -2,6 +2,7 @@ package src;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Utils {
     private static final int PERMITTED_ARG_LENGTH = 2;
@@ -31,5 +32,12 @@ public class Utils {
 
     public static boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\d+)?");
+    }
+
+    public static void negativeNumberCheck(List<Integer> numsToCheck) {
+        List<Integer> negativeNums = numsToCheck.stream().filter(num -> num < 0).toList();
+        if (!negativeNums.isEmpty()) {
+            throw new IllegalArgumentException("Negative numbers are not allowed. " + negativeNums);
+        }
     }
 }
