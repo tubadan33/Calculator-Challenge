@@ -31,6 +31,10 @@ class MainTest {
         //Should handle invalid numbers
         result = Utils.parseInput("1, B");
         assertEquals(Arrays.asList(1, 0), result);
+
+        //Should handle new line delimiters
+        result = Utils.parseInput("1\n5");
+        assertEquals(Arrays.asList(1, 5), result);
     }
 
     @Test

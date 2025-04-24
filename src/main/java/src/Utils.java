@@ -14,8 +14,8 @@ public class Utils {
     }
 
     public static List<Integer> parseInput(String input) {
-        return Arrays.stream(input.split(","))
-                                   .map(i -> parseNumber(i.trim())).toList();
+        return Arrays.stream(input.split(",|[\n]"))
+                     .map(i -> parseNumber(i.trim())).toList();
     }
 
     public static int parseNumber(String stringToParse) {
