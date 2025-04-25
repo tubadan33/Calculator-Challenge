@@ -25,6 +25,9 @@ public class Utils {
     }
 
     public static String parseDelimiter(String input) {
+        if (input.charAt(2) == '[') {
+            return input.substring(3, input.indexOf("]"));
+        }
         return input.substring(2, input.indexOf("\n"));
     }
 

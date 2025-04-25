@@ -17,6 +17,11 @@ class MainTest {
         assertEquals(",", parseDelimiter("//,\n4,5,6"));
 
         assertEquals("#", parseDelimiter("//#\n4#5#6"));
+
+        //Should handle delimiters of any length
+        assertEquals("***", parseDelimiter("//[***]\n4#5#6"));
+
+        assertEquals("&&&&", parseDelimiter("//[&&&&]\n4#5#6"));
     }
 
     @Test
