@@ -26,9 +26,18 @@ public class Utils {
 
     public static String parseDelimiter(String input) {
         if (input.charAt(2) == '[') {
-            return input.substring(3, input.indexOf("]"));
+            return parseCustomDelimiter(input);
         }
         return input.substring(2, input.indexOf("\n"));
+    }
+
+    public static String parseCustomDelimiter(String input) {
+        String delimiterString = input.substring(input.indexOf("]"));
+        if (delimiterString.contains("[")) {
+            List<String> delimiters = Arrays.asList(input.substring(3, input.indexOf('\n') - 1).split("]\\["));
+            return String.join("|", delimiters);
+        }
+        return input.substring(3, input.indexOf("]"));
     }
 
     public static int parseNumber(String stringToParse) {
