@@ -14,8 +14,18 @@ public class Utils {
     }
 
     public static List<Integer> parseInput(String input) {
+        if (input.startsWith("//")) {
+            String delimiter = parseDelimiter(input);
+            String numString = input.substring(input.indexOf("\n") + 1);
+            return Arrays.stream(numString.split(delimiter))
+                         .map(i -> parseNumber(i.trim())).toList();
+        }
         return Arrays.stream(input.split(",|[\n]"))
                      .map(i -> parseNumber(i.trim())).toList();
+    }
+
+    public static String parseDelimiter(String input) {
+        return input.substring(2, input.indexOf("\n"));
     }
 
     public static int parseNumber(String stringToParse) {

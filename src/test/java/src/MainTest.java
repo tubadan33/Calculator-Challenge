@@ -12,6 +12,14 @@ import static src.Utils.*;
 class MainTest {
 
     @Test
+    public void customDelimiterTest(){
+        //Should parse delimiter from input string
+        assertEquals(",", parseDelimiter("//,\n4,5,6"));
+
+        assertEquals("#", parseDelimiter("//#\n4#5#6"));
+    }
+
+    @Test
     public void argsLenCheckTest(){
         //Should throw an exception if there are more than 2 arguments
         assertThrows(IllegalArgumentException.class, () -> argsLenCheck("1, 2, 3"));
@@ -44,6 +52,10 @@ class MainTest {
         //Should handle new line delimiters
         result = Utils.parseInput("1\n5");
         assertEquals(Arrays.asList(1, 5), result);
+
+        //Should handle custom delimiters
+        result = Utils.parseInput("//#\n3#7");
+        assertEquals(Arrays.asList(3, 7), result);
     }
 
     @Test
@@ -94,5 +106,4 @@ class MainTest {
         isNumber = isNumeric ("b");
         assertFalse(isNumber);
     }
-
 }
