@@ -2,6 +2,7 @@ package src;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Utils {
     private static final int PERMITTED_ARG_LENGTH = 2;
@@ -64,5 +65,19 @@ public class Utils {
         if (!negativeNums.isEmpty()) {
             throw new IllegalArgumentException("Negative numbers are not allowed. " + negativeNums);
         }
+    }
+
+    public static void printFormula(List<Integer> numbers, int sum) {
+        StringBuilder sb = new StringBuilder();
+        IntStream.range(0, numbers.size()).forEach(i -> {
+            if (i != numbers.size() - 1) {
+                sb.append(numbers.get(i)).append("+");
+            }
+            if (i == numbers.size() - 1) {
+                sb.append(numbers.get(i));
+            }
+        });
+        sb.append("=").append(sum);
+        System.out.println(sb);
     }
 }

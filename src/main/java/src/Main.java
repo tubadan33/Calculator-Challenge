@@ -10,7 +10,9 @@ public class Main {
 
         List<Integer> parsed = Utils.parseInput(input);
         Utils.negativeNumberCheck(parsed);
-        System.out.println(Utils.sum(parsed));
+        int sum = Utils.sum(parsed);
+        Utils.printFormula(parsed, sum);
+        System.out.println(sum);
     }
 }
 
